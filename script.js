@@ -1,6 +1,7 @@
+
 //
 // ==========================================
-// OPEN INVITATION ANIMATION
+// OPEN INVITATION — CURTAIN SPLIT ANIMATION
 // ==========================================
 //
 
@@ -9,11 +10,13 @@ const openInvitationBtn = document.getElementById("openInvitation");
 
 openInvitationBtn.addEventListener("click", () => {
 
-  // Fade out opening screen
+  // Add curtain split class
   openingScreen.classList.add("hide-opening");
 
-  // Enable scroll after opening
-  document.body.style.overflow = "auto";
+  // Enable scroll after curtain animation
+  setTimeout(() => {
+    document.body.style.overflow = "auto";
+  }, 1400);
 
 });
 
