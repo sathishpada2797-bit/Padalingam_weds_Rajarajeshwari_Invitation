@@ -169,7 +169,7 @@ button{
 
 
 /* =========================================
-   OPENING SCREEN — FIXED VERSION
+   OPENING SCREEN — COMPLETE CLEAN VERSION
 ========================================= */
 
 .opening-screen {
@@ -182,8 +182,7 @@ button{
   align-items: center;
   justify-content: center;
   overflow: hidden;
-
-  /* SOLID BACKGROUND — prevents hero bleed-through */
+  /* SOLID fallback + image on top */
   background-color: #1c120e;
   background-image:
     linear-gradient(
@@ -195,9 +194,7 @@ button{
   background-position: center;
 }
 
-/* =========================================
-   CURTAIN SPLIT — REDUCED OPACITY
-========================================= */
+/* --- CURTAINS (visual only, no click blocking) --- */
 
 .curtain-left,
 .curtain-right {
@@ -206,61 +203,24 @@ button{
   width: 50%;
   height: 100%;
   background: transparent;
-  z-index: 3;  /* LOWERED: was 10, now below content (z-index 8) */
-  transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
-  pointer-events: none;  /* ADDED: allows clicks to pass through */
-}
-
-.curtain-left {
-  left: 0;
-  transform-origin: left center;
-}
-
-.curtain-right {
-  right: 0;
-  transform-origin: right center;
-}
-
-.hide-opening .curtain-left {
-  transform: translateX(-100%);
-}
-
-.hide-opening .curtain-right {
-  transform: translateX(100%);
-}
-
-/* =========================================
-   HIDE OPENING
-========================================= */
-
-.hide-opening {
   pointer-events: none;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 1s ease, visibility 0s 1s;
+  z-index: 1;
+  transition: transform 1.4s cubic-bezier(0.77, 0, 0.175, 1);
 }
 
-.hide-opening .opening-content {
-  opacity: 0;
-  transform: scale(0.95);
-  transition: 0.5s ease;
-}
+.curtain-left { left: 0; }
+.curtain-right { right: 0; }
 
-.hide-opening .sparkles,
-.hide-opening .ornamental-frame {
-  opacity: 0;
-  transition: 0.5s ease;
-}
+.hide-opening .curtain-left { transform: translateX(-100%); }
+.hide-opening .curtain-right { transform: translateX(100%); }
 
-/* =========================================
-   SPARKLE PARTICLES
-========================================= */
+/* --- SPARKLES (decorative, no click blocking) --- */
 
 .sparkles {
   position: absolute;
   inset: 0;
-  pointer-events: none;  /* Ensure this is set */
-  z-index: 5;
+  pointer-events: none;
+  z-index: 2;
   overflow: hidden;
 }
 
@@ -288,37 +248,20 @@ button{
 .sparkle:nth-child(12) { left: 70%; top: 10%; animation-duration: 4.6s; animation-delay: 3s; }
 
 @keyframes sparkleFloat {
-  0% {
-    opacity: 0;
-    transform: translateY(0) scale(0.5);
-  }
-  20% {
-    opacity: 1;
-    transform: translateY(-10px) scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translateY(-25px) scale(1.2);
-  }
-  80% {
-    opacity: 0.4;
-    transform: translateY(-40px) scale(0.8);
-  }
-  100% {
-    opacity: 0;
-    transform: translateY(-60px) scale(0.3);
-  }
+  0%   { opacity: 0; transform: translateY(0) scale(0.5); }
+  20%  { opacity: 1; transform: translateY(-10px) scale(1); }
+  50%  { opacity: 0.8; transform: translateY(-25px) scale(1.2); }
+  80%  { opacity: 0.4; transform: translateY(-40px) scale(0.8); }
+  100% { opacity: 0; transform: translateY(-60px) scale(0.3); }
 }
 
-/* =========================================
-   ORNAMENTAL FRAME
-========================================= */
+/* --- ORNAMENTAL FRAME (decorative, no click blocking) --- */
 
 .ornamental-frame {
   position: absolute;
   inset: 30px;
-  z-index: 4;
-  pointer-events: none;  /* Ensure this is set */
+  z-index: 2;
+  pointer-events: none;
 }
 
 .frame-corner {
@@ -332,62 +275,28 @@ button{
   opacity: 0;
 }
 
-.frame-corner.top-left {
-  top: 0;
-  left: 0;
-  border-top-width: 2px;
-  border-left-width: 2px;
-}
-
-.frame-corner.top-right {
-  top: 0;
-  right: 0;
-  border-top-width: 2px;
-  border-right-width: 2px;
-}
-
-.frame-corner.bottom-left {
-  bottom: 0;
-  left: 0;
-  border-bottom-width: 2px;
-  border-left-width: 2px;
-}
-
-.frame-corner.bottom-right {
-  bottom: 0;
-  right: 0;
-  border-bottom-width: 2px;
-  border-right-width: 2px;
-}
+.frame-corner.top-left     { top: 0; left: 0; border-top-width: 2px; border-left-width: 2px; }
+.frame-corner.top-right    { top: 0; right: 0; border-top-width: 2px; border-right-width: 2px; }
+.frame-corner.bottom-left  { bottom: 0; left: 0; border-bottom-width: 2px; border-left-width: 2px; }
+.frame-corner.bottom-right { bottom: 0; right: 0; border-bottom-width: 2px; border-right-width: 2px; }
 
 @keyframes cornerFadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+  from { opacity: 0; transform: scale(0.7); }
+  to   { opacity: 1; transform: scale(1); }
 }
 
-/* =========================================
-   OPENING CONTENT
-========================================= */
+/* --- OPENING CONTENT --- */
 
 .opening-content {
   position: relative;
-  z-index: 20;  /* RAISED: highest in the stack */
+  z-index: 50;
   text-align: center;
   color: #ffffff;
   padding: 20px;
   max-width: 900px;
-  transition: 0.6s ease;
 }
 
-/* =========================================
-   GANESHA ICON — GLOW PULSE
-========================================= */
+/* --- GANESHA ICON --- */
 
 .ganesha-icon {
   font-size: 42px;
@@ -406,36 +315,22 @@ button{
 }
 
 @keyframes ganeshEntrance {
-  from {
-    opacity: 0;
-    transform: scale(0.5) translateY(-20px);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-  }
+  from { opacity: 0; transform: scale(0.5) translateY(-20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 @keyframes glowPulse {
   0%, 100% {
-    text-shadow:
-      0 0 10px rgba(244, 211, 155, 0.6),
-      0 0 30px rgba(198, 164, 106, 0.4),
-      0 0 60px rgba(198, 164, 106, 0.2);
+    text-shadow: 0 0 10px rgba(244, 211, 155, 0.6), 0 0 30px rgba(198, 164, 106, 0.4), 0 0 60px rgba(198, 164, 106, 0.2);
     transform: scale(1);
   }
   50% {
-    text-shadow:
-      0 0 20px rgba(244, 211, 155, 0.9),
-      0 0 50px rgba(198, 164, 106, 0.6),
-      0 0 80px rgba(198, 164, 106, 0.3);
+    text-shadow: 0 0 20px rgba(244, 211, 155, 0.9), 0 0 50px rgba(198, 164, 106, 0.6), 0 0 80px rgba(198, 164, 106, 0.3);
     transform: scale(1.05);
   }
 }
 
-/* =========================================
-   ORNAMENT LINES
-========================================= */
+/* --- ORNAMENT LINES --- */
 
 .ornament-line {
   color: #c6a46a;
@@ -455,19 +350,11 @@ button{
 }
 
 @keyframes ornamentReveal {
-  from {
-    opacity: 0;
-    letter-spacing: 15px;
-  }
-  to {
-    opacity: 0.8;
-    letter-spacing: 4px;
-  }
+  from { opacity: 0; letter-spacing: 15px; }
+  to   { opacity: 0.8; letter-spacing: 4px; }
 }
 
-/* =========================================
-   INVITED TEXT — LETTER BY LETTER
-========================================= */
+/* --- INVITED TEXT (LETTER BY LETTER) --- */
 
 .invited-text {
   letter-spacing: 8px;
@@ -500,19 +387,11 @@ button{
 .invited-text span:nth-child(15) { animation-delay: 1.44s; }
 
 @keyframes letterReveal {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(15px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* =========================================
-   COUPLE NAMES — STAGGERED REVEAL (FIX OVERLAP)
-========================================= */
+/* --- COUPLE NAMES --- */
 
 .couple-names {
   font-family: 'Cinzel', serif;
@@ -520,9 +399,6 @@ button{
   line-height: 1.15;
   font-weight: 600;
   color: #ffffff;
-  /* IMPORTANT: Reset any inherited styles */
-  text-shadow: none;
-  position: relative;
 }
 
 .name-reveal {
@@ -550,30 +426,16 @@ button{
 }
 
 @keyframes nameSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes ampReveal {
-  from {
-    opacity: 0;
-    transform: scale(0.5) rotate(-10deg);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1) rotate(0deg);
-  }
+  from { opacity: 0; transform: scale(0.5) rotate(-10deg); }
+  to   { opacity: 1; transform: scale(1) rotate(0deg); }
 }
 
-/* =========================================
-   OPENING DESCRIPTION
-========================================= */
+/* --- OPENING DESCRIPTION --- */
 
 .opening-description {
   margin-top: 35px;
@@ -584,13 +446,12 @@ button{
   animation: fadeUp 1s 2.4s ease forwards;
 }
 
-/* =========================================
-   OPEN BUTTON — FIXED VISIBILITY + SHIMMER
-========================================= */
+/* --- OPEN BUTTON --- */
 
 .open-btn {
+  display: inline-block;
   position: relative;
-  z-index: 25;  /* ADDED: ensure button is above everything */
+  z-index: 100;
   margin-top: 45px;
   background: linear-gradient(135deg, #c6a46a, #e8c97a);
   color: #1a0f0a;
@@ -598,14 +459,13 @@ button{
   border-radius: 60px;
   font-size: 15px;
   font-weight: 600;
+  border: 1px solid rgba(255, 215, 100, 0.4);
+  cursor: pointer;
   box-shadow:
     0 15px 40px rgba(0, 0, 0, 0.25),
     0 0 20px rgba(198, 164, 106, 0.3);
   overflow: hidden;
-  border: 1px solid rgba(255, 215, 100, 0.4);
-  cursor: pointer;
-  opacity: 0;
-  animation: btnEntrance 0.8s 2.8s ease forwards;
+  /* NO opacity animation — button is visible immediately */
   transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
@@ -627,41 +487,18 @@ button{
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.4),
-    transparent
-  );
-  animation: shimmer 3s 3.5s infinite;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  animation: shimmer 3s 1s infinite;
+  pointer-events: none;
 }
 
 @keyframes shimmer {
-  0% {
-    left: -100%;
-  }
-  50% {
-    left: 100%;
-  }
-  100% {
-    left: 100%;
-  }
+  0%   { left: -100%; }
+  50%  { left: 100%; }
+  100% { left: 100%; }
 }
 
-@keyframes btnEntrance {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* =========================================
-   DATE PREVIEW
-========================================= */
+/* --- DATE PREVIEW --- */
 
 .date-preview {
   margin-top: 30px;
@@ -672,98 +509,49 @@ button{
   animation: fadeUp 1s 3.2s ease forwards;
 }
 
-/* =========================================
-   GLOBAL FADE UP KEYFRAME
-========================================= */
+/* --- HIDE OPENING (triggered by JS) --- */
 
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.hide-opening {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 1.2s ease, visibility 0s 1.2s;
 }
 
-/* =========================================
-   RESPONSIVE — OPENING SCREEN
-========================================= */
+/* --- FADE UP KEYFRAME --- */
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* --- RESPONSIVE --- */
 
 @media (max-width: 992px) {
-  .couple-names {
-    font-size: 62px;
-  }
-
-  .couple-names .amp-symbol {
-    font-size: 42px;
-  }
-
-  .ornamental-frame {
-    inset: 20px;
-  }
-
-  .frame-corner {
-    width: 45px;
-    height: 45px;
-  }
+  .couple-names { font-size: 62px; }
+  .amp-symbol { font-size: 42px; }
+  .ornamental-frame { inset: 20px; }
+  .frame-corner { width: 45px; height: 45px; }
 }
 
 @media (max-width: 768px) {
-  .couple-names {
-    font-size: 44px;
-  }
-
-  .couple-names .amp-symbol {
-    font-size: 32px;
-  }
-
-  .opening-description {
-    font-size: 15px;
-  }
-
-  .ornamental-frame {
-    inset: 15px;
-  }
-
-  .frame-corner {
-    width: 35px;
-    height: 35px;
-  }
+  .couple-names { font-size: 44px; }
+  .amp-symbol { font-size: 32px; }
+  .opening-description { font-size: 15px; }
+  .ornamental-frame { inset: 15px; }
+  .frame-corner { width: 35px; height: 35px; }
 }
 
 @media (max-width: 480px) {
-  .couple-names {
-    font-size: 36px;
-  }
-
-  .couple-names .amp-symbol {
-    font-size: 26px;
-  }
-
-  .invited-text {
-    letter-spacing: 4px;
-    font-size: 10px;
-  }
-
-  .open-btn {
-    width: 100%;
-  }
-
-  .ornamental-frame {
-    inset: 10px;
-  }
-
-  .frame-corner {
-    width: 28px;
-    height: 28px;
-  }
-
-  .ornament-line {
-    font-size: 11px;
-  }
+  .couple-names { font-size: 36px; }
+  .amp-symbol { font-size: 26px; }
+  .invited-text { letter-spacing: 4px; font-size: 10px; }
+  .open-btn { width: 100%; }
+  .ornamental-frame { inset: 10px; }
+  .frame-corner { width: 28px; height: 28px; }
+  .ornament-line { font-size: 11px; }
 }
+
 
 /* =========================================
    HERO SECTION
