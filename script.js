@@ -9,15 +9,10 @@ const openingScreen = document.getElementById("openingScreen");
 const openInvitationBtn = document.getElementById("openInvitation");
 
 openInvitationBtn.addEventListener("click", () => {
-
-  // Add curtain split class
   openingScreen.classList.add("hide-opening");
-
-  // Enable scroll after curtain animation
   setTimeout(() => {
     document.body.style.overflow = "auto";
-  }, 1400);
-
+  }, 1000);
 });
 
 //
