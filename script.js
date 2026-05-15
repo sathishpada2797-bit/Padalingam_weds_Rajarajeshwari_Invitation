@@ -1,364 +1,147 @@
-//
-// ==========================================
-// OPEN INVITATION — CLICK HANDLER
-// ==========================================
-//
 
-document.body.style.overflow = "hidden";
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  var openingScreen = document.getElementById("openingScreen");
-  var openBtn = document.getElementById("openInvitation");
-
-  if (!openBtn) {
-    console.error("ERROR: Button #openInvitation not found!");
-    return;
-  }
-
-  if (!openingScreen) {
-    console.error("ERROR: Section #openingScreen not found!");
-    return;
-  }
-
-  console.log("✅ Button found, adding click listener...");
-
-  openBtn.onclick = function () {
-
-    console.log("✅ Button CLICKED!");
-
-    openingScreen.classList.add("hide-opening");
-
-    setTimeout(function () {
-      document.body.style.overflow = "auto";
-    }, 1200);
-
-    // Auto-play music
-    var music = document.getElementById("bgMusic");
-    var musicToggle = document.getElementById("musicToggle");
-
-    if (music) {
-      music.play().then(function () {
-        if (musicToggle) {
-          musicToggle.innerHTML = "♫ Pause Music";
-          musicToggle.classList.add("active");
-        }
-      }).catch(function (e) {
-        console.log("Autoplay blocked:", e);
-      });
-    }
-
-  };
-
-});
-
-//
-// ==========================================
-// DISABLE SCROLL BEFORE OPENING
-// ==========================================
-//
-
-document.body.style.overflow = "hidden";
-
-//
-// ==========================================
-// BACKGROUND MUSIC CONTROL
-// ==========================================
-//
-
-const music = document.getElementById("bgMusic");
-const musicToggle = document.getElementById("musicToggle");
-
-let isPlaying = false;
-
-musicToggle.addEventListener("click", async () => {
-
-  try {
-
-    if (!isPlaying) {
-
-      await music.play();
-
-      musicToggle.innerHTML = "♫ Pause Music";
-      musicToggle.classList.add("active");
-
-      isPlaying = true;
-
-    } else {
-
-      music.pause();
-
-      musicToggle.innerHTML = "♫ Play Music";
-      musicToggle.classList.remove("active");
-
-      isPlaying = false;
-
-    }
-
-  } catch (error) {
-
-    console.log("Music autoplay blocked:", error);
-
-  }
-
-});
-
-//
-// ==========================================
-// AUTO PLAY MUSIC AFTER OPEN INVITATION
-// ==========================================
-//
-
-openInvitationBtn.addEventListener("click", async () => {
-
-  try {
-
-    await music.play();
-
-    musicToggle.innerHTML = "♫ Pause Music";
-    musicToggle.classList.add("active");
-
-    isPlaying = true;
-
-  } catch (error) {
-
-    console.log("Autoplay blocked:", error);
-
-  }
-
-});
-
-//
-// ==========================================
-// COUNTDOWN TIMER
-// ==========================================
-//
-
-// Wedding Date
-const weddingDate = new Date("June 07, 2026 07:35:00").getTime();
-
-const daysEl = document.getElementById("days");
-const hoursEl = document.getElementById("hours");
-const minutesEl = document.getElementById("minutes");
-const secondsEl = document.getElementById("seconds");
-
-function updateCountdown() {
-
-  const now = new Date().getTime();
-
-  const distance = weddingDate - now;
-
-  // Time calculations
-  const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-
-  const hours = Math.floor(
-    (distance % (1000 * 60 * 60 * 24)) /
-    (1000 * 60 * 60)
-  );
-
-  const minutes = Math.floor(
-    (distance % (1000 * 60 * 60)) /
-    (1000 * 60)
-  );
-
-  const seconds = Math.floor(
-    (distance % (1000 * 60)) /
-    1000
-  );
-
-  // Update HTML
-  daysEl.innerHTML = formatTime(days);
-  hoursEl.innerHTML = formatTime(hours);
-  minutesEl.innerHTML = formatTime(minutes);
-  secondsEl.innerHTML = formatTime(seconds);
-
-  // Wedding day reached
-  if (distance < 0) {
-
-    clearInterval(countdownInterval);
-
-    daysEl.innerHTML = "00";
-    hoursEl.innerHTML = "00";
-    minutesEl.innerHTML = "00";
-    secondsEl.innerHTML = "00";
-
-  }
-
+document.body.style.overflow="hidden";
+document.addEventListener("DOMContentLoaded",function(){
+var openingScreen=document.getElementById("openingScreen");
+var openBtn=document.getElementById("openInvitation");
+var music=document.getElementById("bgMusic");
+var musicToggle=document.getElementById("musicToggle");
+var isPlaying=false;
+if(!openBtn){
+console.error("ERROR: Button #openInvitation not found!");
+return;
 }
-
-//
-// ==========================================
-// FORMAT TIME
-// ==========================================
-//
-
-function formatTime(time) {
-
-  return time < 10 ? `0${time}` : time;
-
+if(!openingScreen){
+console.error("ERROR: Section #openingScreen not found!");
+return;
 }
-
-//
-// ==========================================
-// START COUNTDOWN
-// ==========================================
-//
-
+console.log("Button found, adding click listener...");
+openBtn.onclick=function(){
+console.log("Button CLICKED!");
+openingScreen.classList.add("hide-opening");
+setTimeout(function(){
+document.body.style.overflow="auto";
+},1200);
+if(music){
+music.play().then(function(){
+isPlaying=true;
+if(musicToggle){
+musicToggle.innerHTML="♫ Pause Music";
+musicToggle.classList.add("active");
+}
+}).catch(function(e){
+console.log("Autoplay blocked:",e);
+});
+}
+};
+if(musicToggle&&music){
+musicToggle.addEventListener("click",function(){
+if(!isPlaying){
+music.play().then(function(){
+musicToggle.innerHTML="♫ Pause Music";
+musicToggle.classList.add("active");
+isPlaying=true;
+}).catch(function(e){
+console.log("Music play blocked:",e);
+});
+}else{
+music.pause();
+musicToggle.innerHTML="♫ Play Music";
+musicToggle.classList.remove("active");
+isPlaying=false;
+}
+});
+}
+var weddingDate=new Date("June 07, 2026 07:35:00").getTime();
+var daysEl=document.getElementById("days");
+var hoursEl=document.getElementById("hours");
+var minutesEl=document.getElementById("minutes");
+var secondsEl=document.getElementById("seconds");
+function formatTime(time){
+return time<10?"0"+time:time;
+}
+function updateCountdown(){
+var now=new Date().getTime();
+var distance=weddingDate-now;
+var days=Math.floor(distance/(1000*60*60*24));
+var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds=Math.floor((distance%(1000*60))/1000);
+if(daysEl)daysEl.innerHTML=formatTime(days);
+if(hoursEl)hoursEl.innerHTML=formatTime(hours);
+if(minutesEl)minutesEl.innerHTML=formatTime(minutes);
+if(secondsEl)secondsEl.innerHTML=formatTime(seconds);
+if(distance<0){
+clearInterval(countdownInterval);
+if(daysEl)daysEl.innerHTML="00";
+if(hoursEl)hoursEl.innerHTML="00";
+if(minutesEl)minutesEl.innerHTML="00";
+if(secondsEl)secondsEl.innerHTML="00";
+}
+}
 updateCountdown();
-
-const countdownInterval = setInterval(updateCountdown, 1000);
-
-//
-// ==========================================
-// SCROLL REVEAL ANIMATION
-// ==========================================
-//
-
-const revealElements = document.querySelectorAll(
-  ".story-card, .event-card, .gallery-item, .save-date-card, .wish-card, .rsvp-card"
+var countdownInterval=setInterval(updateCountdown,1000);
+var revealElements=document.querySelectorAll(
+".story-card, .event-card, .gallery-item, .save-date-card, .wish-card, .rsvp-card"
 );
-
-function revealOnScroll() {
-
-  const windowHeight = window.innerHeight;
-
-  revealElements.forEach((element) => {
-
-    const elementTop = element.getBoundingClientRect().top;
-
-    if (elementTop < windowHeight - 100) {
-
-      element.classList.add("show");
-
-    }
-
-  });
-
+function revealOnScroll(){
+var windowHeight=window.innerHeight;
+revealElements.forEach(function(element){
+var elementTop=element.getBoundingClientRect().top;
+if(elementTop<windowHeight-100){
+element.classList.add("show");
 }
-
-window.addEventListener("scroll", revealOnScroll);
-
+});
+}
+window.addEventListener("scroll",revealOnScroll);
 revealOnScroll();
-
-//
-// ==========================================
-// WISH FORM
-// ==========================================
-//
-
-const wishForm = document.querySelector(".wish-form");
-
-wishForm.addEventListener("submit", (e) => {
-
-  e.preventDefault();
-
-  const input = wishForm.querySelector("input");
-  const textarea = wishForm.querySelector("textarea");
-
-  const name = input.value.trim();
-  const message = textarea.value.trim();
-
-  if (name === "" || message === "") {
-
-    alert("Please fill all fields 💛");
-    return;
-
-  }
-
-  // Success Message
-  alert("Thank you for your lovely wishes 💖");
-
-  // Clear Form
-  input.value = "";
-  textarea.value = "";
-
+var wishForm=document.querySelector(".wish-form");
+if(wishForm){
+wishForm.addEventListener("submit",function(e){
+e.preventDefault();
+var input=wishForm.querySelector("input");
+var textarea=wishForm.querySelector("textarea");
+var name=input.value.trim();
+var message=textarea.value.trim();
+if(name===""||message===""){
+alert("Please fill all fields 💛");
+return;
+}
+alert("Thank you for your lovely wishes 💖");
+input.value="";
+textarea.value="";
 });
-
-//
-// ==========================================
-// PARALLAX EFFECT
-// ==========================================
-//
-
-window.addEventListener("scroll", () => {
-
-  const scrolled = window.scrollY;
-
-  const heroImage = document.querySelector(".hero-image");
-
-  if (heroImage) {
-
-    heroImage.style.transform =
-      `scale(1.08) translateY(${scrolled * 0.08}px)`;
-
-  }
-
+}
+window.addEventListener("scroll",function(){
+var scrolled=window.scrollY;
+var heroImage=document.querySelector(".hero-image");
+if(heroImage){
+heroImage.style.transform="scale(1.08) translateY("+(scrolled*0.08)+"px)";
+}
 });
-
-//
-// ==========================================
-// SMOOTH SCROLL
-// ==========================================
-//
-
-document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-
-  anchor.addEventListener("click", function (e) {
-
-    const target = document.querySelector(this.getAttribute("href"));
-
-    if (target) {
-
-      e.preventDefault();
-
-      target.scrollIntoView({
-        behavior: "smooth"
-      });
-
-    }
-
-  });
-
+document.querySelectorAll('a[href^="#"]').forEach(function(anchor){
+anchor.addEventListener("click",function(e){
+var target=document.querySelector(this.getAttribute("href"));
+if(target){
+e.preventDefault();
+target.scrollIntoView({behavior:"smooth"});
+}
 });
-
-//
-// ==========================================
-// LOADING ANIMATION
-// ==========================================
-//
-
-window.addEventListener("load", () => {
-
-  document.body.classList.add("loaded");
-
 });
-
-//
-// ==========================================
-// MOBILE TOUCH ANIMATION
-// ==========================================
-//
-
-const buttons = document.querySelectorAll(
-  ".open-btn, .rsvp-btn, .wish-form button, .music-btn"
+var touchButtons=document.querySelectorAll(
+".open-btn, .rsvp-btn, .wish-form button, .music-btn"
 );
-
-buttons.forEach((button) => {
-
-  button.addEventListener("touchstart", () => {
-
-    button.classList.add("touch-active");
-
-  });
-
-  button.addEventListener("touchend", () => {
-
-    setTimeout(() => {
-
-      button.classList.remove("touch-active");
-
-    }, 150);
-
-  });
-
+touchButtons.forEach(function(button){
+button.addEventListener("touchstart",function(){
+button.classList.add("touch-active");
 });
+button.addEventListener("touchend",function(){
+setTimeout(function(){
+button.classList.remove("touch-active");
+},150);
+});
+});
+});
+window.addEventListener("load",function(){
+document.body.classList.add("loaded");
+});
+
