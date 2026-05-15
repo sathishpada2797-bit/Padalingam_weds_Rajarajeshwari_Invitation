@@ -1,18 +1,55 @@
-
 //
 // ==========================================
-// OPEN INVITATION — CURTAIN SPLIT ANIMATION
+// OPEN INVITATION — CLICK HANDLER
 // ==========================================
 //
 
-const openingScreen = document.getElementById("openingScreen");
-const openInvitationBtn = document.getElementById("openInvitation");
+document.body.style.overflow = "hidden";
 
-openInvitationBtn.addEventListener("click", () => {
-  openingScreen.classList.add("hide-opening");
-  setTimeout(() => {
-    document.body.style.overflow = "auto";
-  }, 1000);
+document.addEventListener("DOMContentLoaded", function () {
+
+  var openingScreen = document.getElementById("openingScreen");
+  var openBtn = document.getElementById("openInvitation");
+
+  if (!openBtn) {
+    console.error("ERROR: Button #openInvitation not found!");
+    return;
+  }
+
+  if (!openingScreen) {
+    console.error("ERROR: Section #openingScreen not found!");
+    return;
+  }
+
+  console.log("✅ Button found, adding click listener...");
+
+  openBtn.onclick = function () {
+
+    console.log("✅ Button CLICKED!");
+
+    openingScreen.classList.add("hide-opening");
+
+    setTimeout(function () {
+      document.body.style.overflow = "auto";
+    }, 1200);
+
+    // Auto-play music
+    var music = document.getElementById("bgMusic");
+    var musicToggle = document.getElementById("musicToggle");
+
+    if (music) {
+      music.play().then(function () {
+        if (musicToggle) {
+          musicToggle.innerHTML = "♫ Pause Music";
+          musicToggle.classList.add("active");
+        }
+      }).catch(function (e) {
+        console.log("Autoplay blocked:", e);
+      });
+    }
+
+  };
+
 });
 
 //
