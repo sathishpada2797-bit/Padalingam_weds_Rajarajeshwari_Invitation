@@ -1123,5 +1123,35 @@ button{
   .count-box h3{
     font-size:32px;
   }
+   /* FIX OPENER OVERLAP */
 
+.invitation-opener {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  transition:
+    opacity 1s ease,
+    visibility 1s ease,
+    transform 1s ease;
+}
+
+.invitation-opener.hide-opener {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: scale(1.05);
+}
+
+/* Prevent page scroll before opening */
+
+body.lock-scroll {
+  overflow: hidden;
+}
+
+/* Enable after opening */
+
+body.opened {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 }
