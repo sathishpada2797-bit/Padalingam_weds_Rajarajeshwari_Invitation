@@ -1,22 +1,21 @@
-/* =========================
-   INVITATION OPENER
-========================= */
+//
+// ==========================================
+// OPEN INVITATION ANIMATION
+// ==========================================
+//
 
-const opener = document.getElementById("invitationOpener");
-const openBtn = document.getElementById("openInvitation");
+const openingScreen = document.getElementById("openingScreen");
+const openInvitationBtn = document.getElementById("openInvitation");
 
-document.body.classList.add("lock-scroll");
+openInvitationBtn.addEventListener("click", () => {
 
-openBtn.addEventListener("click", () => {
-  opener.classList.add("hide-opener");
+  // Fade out opening screen
+  openingScreen.classList.add("hide-opening");
 
-  document.body.classList.remove("lock-scroll");
-  document.body.classList.add("opened");
+  // Enable scroll after opening
+  document.body.style.overflow = "auto";
 
-  setTimeout(() => {
-    opener.style.display = "none";
-  }, 1200);
-});;
+});
 
 //
 // ==========================================
