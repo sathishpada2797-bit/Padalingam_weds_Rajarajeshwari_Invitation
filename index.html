@@ -1,71 +1,131 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Rajarajeshwari & Padalingam Wedding Invitation</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Great+Vibes&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css"/>
+<title>Button Test</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Poppins',sans-serif;background:#f7efe3;overflow:hidden;}
+.opening-screen{
+position:fixed;
+inset:0;
+z-index:9999;
+display:flex;
+align-items:center;
+justify-content:center;
+background:#1c120e;
+}
+.opening-content{
+position:relative;
+z-index:50;
+text-align:center;
+color:#fff;
+padding:20px;
+}
+.couple-names{
+font-family:'Cinzel',serif;
+font-size:60px;
+font-weight:600;
+margin-bottom:20px;
+}
+.amp-symbol{
+color:#c6a46a;
+display:block;
+font-size:40px;
+margin:10px 0;
+}
+.opening-description{
+font-size:16px;
+margin-bottom:30px;
+opacity:0.9;
+}
+.open-btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+gap:8px;
+position:relative;
+z-index:9999;
+margin-top:20px;
+background:linear-gradient(135deg,#c6a46a,#e8c97a);
+color:#1a0f0a;
+padding:16px 38px;
+border-radius:60px;
+font-size:15px;
+font-weight:600;
+border:1px solid rgba(255,215,100,0.4);
+cursor:pointer;
+box-shadow:0 15px 40px rgba(0,0,0,0.25),0 0 20px rgba(198,164,106,0.3);
+}
+.open-btn:hover{
+transform:translateY(-4px) scale(1.03);
+}
+.btn-arrow{
+animation:bounce 1.5s ease-in-out infinite;
+}
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(4px);}
+}
+.hide-opening{
+opacity:0;
+pointer-events:none;
+visibility:hidden;
+transition:opacity 1.2s ease,visibility 0s 1.2s;
+}
+#result{
+display:none;
+position:fixed;
+inset:0;
+z-index:1;
+background:#f7efe3;
+display:flex;
+align-items:center;
+justify-content:center;
+font-family:'Cinzel',serif;
+font-size:36px;
+color:#3b2b24;
+text-align:center;
+padding:40px;
+}
+</style>
 </head>
 <body>
 <section class="opening-screen" id="openingScreen">
-<div class="curtain-left"></div>
-<div class="curtain-right"></div>
-<div class="sparkles">
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-<span class="sparkle"></span>
-</div>
-<div class="ornamental-frame">
-<div class="frame-corner top-left"></div>
-<div class="frame-corner top-right"></div>
-<div class="frame-corner bottom-left"></div>
-<div class="frame-corner bottom-right"></div>
-</div>
 <div class="opening-content">
-<div class="ganesha-icon">
-<span class="ganesha-glow">🕉</span>
-</div>
-<div class="ornament-line top-ornament">✦ ─────── ✦</div>
-<p class="invited-text">
-<span>Y</span><span>O</span><span>U</span><span>&nbsp;</span><span>A</span><span>R</span><span>E</span><span>&nbsp;</span><span>I</span><span>N</span><span>V</span><span>I</span><span>T</span><span>E</span><span>D</span>
-</p>
 <h1 class="couple-names">
-<span class="name-reveal name-groom">Padalingam</span>
+Padalingam
 <span class="amp-symbol">&amp;</span>
-<span class="name-reveal name-bride">Rajarajeshwari</span>
+Rajarajeshwari
 </h1>
 <p class="opening-description">Together with their families,<br>invite you to celebrate their wedding.</p>
-<button class="open-btn" id="openInvitation">
-  <span class="btn-text">Open Invitation</span>
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-arrow" aria-hidden="true">
-    <path d="m6 9 6 6 6-6"></path>
-  </svg>
-  <span class="btn-shimmer"></span>
+<button type="button" class="open-btn" id="openInvitation">
+<span>Open Invitation</span>
+<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="btn-arrow" aria-hidden="true"><path d="m6 9 6 6 6-6"></path></svg>
 </button>
-<div class="ornament-line bottom-ornament">✦ ─────── ✦</div>
-<p class="date-preview">07 · June · 2026</p>
 </div>
 </section>
-<!-- TEST: This div simulates the rest of your site -->
-<div id="mainContent" style="display:none;padding:100px 40px;text-align:center;font-family:'Cinzel',serif;font-size:40px;color:#3b2b24;">
-✅ Invitation Opened Successfully!<br>
-<span style="font-size:18px;font-family:'Poppins',sans-serif;margin-top:20px;display:block;">The rest of your website content will go here.</span>
-</div>
-<script src="script.js"></script>
+<div id="result">✅ Button Works! Invitation Opened!</div>
+<script>
+document.addEventListener("DOMContentLoaded",function(){
+var screen=document.getElementById("openingScreen");
+var btn=document.getElementById("openInvitation");
+var result=document.getElementById("result");
+console.log("Screen:",screen);
+console.log("Button:",btn);
+btn.onclick=function(){
+console.log("CLICKED!");
+screen.classList.add("hide-opening");
+result.style.display="flex";
+setTimeout(function(){
+document.body.style.overflow="auto";
+},1200);
+};
+});
+</script>
 </body>
 </html>
 
