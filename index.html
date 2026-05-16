@@ -536,29 +536,192 @@ animation:fadeUp 1s 3.2s ease forwards;
   line-height: 1.45;
 }
 /* =========================================
-   SAVE THE DATE SECTION
+   SAVE THE DATE SECTION - LUXURY STYLE
 ========================================= */
-.save-date-section{padding:80px 7% 110px;background:linear-gradient(180deg,#f7efe3,#f1dfc3);visibility:hidden;opacity:0;}
-.save-date-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
-.save-date-card{
-max-width:1100px;margin:auto;
-background:rgba(255,255,255,0.5);backdrop-filter:blur(14px);
-border-radius:40px;padding:70px 50px;text-align:center;
-border:1px solid rgba(198,164,106,0.2);
-opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;
+.save-date-section {
+  padding: 80px 7% 100px;
+  background:
+    radial-gradient(circle at top, rgba(198,164,106,0.16), transparent 36%),
+    linear-gradient(180deg, #f7efe3 0%, #f1dfc3 100%);
+  visibility: hidden;
+  opacity: 0;
 }
-.save-date-card.show{opacity:1;transform:translateY(0);}
-.save-tag{letter-spacing:6px;font-size:12px;color:var(--rose);}
-.save-date-card h2{margin-top:24px;font-family:'Cinzel',serif;font-size:72px;color:var(--brown);}
-.save-date-card .venue{margin-top:20px;color:#705e54;font-size:18px;line-height:1.8;}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:50px;}
-.count-box{
-background:rgba(255,255,255,0.7);padding:35px 20px;border-radius:25px;
-box-shadow:0 10px 30px rgba(0,0,0,0.05);position:relative;overflow:hidden;
+
+.save-date-section.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.8s ease;
 }
-.count-box::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),#e8c97a);}
-.count-box h3{font-size:58px;font-family:'Cinzel',serif;color:var(--brown);}
-.count-box span{display:block;margin-top:10px;letter-spacing:2px;font-size:12px;text-transform:uppercase;color:#705e54;}
+
+.save-date-card {
+  max-width: 980px;
+  margin: auto;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,250,241,0.66));
+  backdrop-filter: blur(14px);
+  border-radius: 38px;
+  padding: 68px 50px 58px;
+  text-align: center;
+  border: 1px solid rgba(198,164,106,0.30);
+  box-shadow:
+    0 24px 70px rgba(59,43,36,0.10),
+    inset 0 1px 0 rgba(255,255,255,0.82);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.save-date-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.save-date-card::before {
+  content: '';
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(198,164,106,0.22);
+  border-radius: 28px;
+  pointer-events: none;
+}
+
+.save-date-card::after {
+  content: '';
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  right: -70px;
+  top: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,164,106,0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.save-tag {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  letter-spacing: 6px;
+  font-size: 12px;
+  color: #8a5d3b;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.save-date-card h2 {
+  position: relative;
+  z-index: 2;
+  margin-top: 6px;
+  font-family: 'Cinzel', serif;
+  font-size: clamp(42px, 6vw, 72px);
+  line-height: 1.08;
+  color: var(--brown);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.save-date-line {
+  position: relative;
+  z-index: 2;
+  width: 120px;
+  height: 1px;
+  margin: 28px auto 26px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.venue {
+  position: relative;
+  z-index: 2;
+  margin-top: 0;
+  color: #705e54;
+  font-size: 17px;
+  line-height: 1.75;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.venue-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(198,164,106,0.16);
+  border: 1px solid rgba(198,164,106,0.30);
+  color: #8a5d3b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.venue-icon svg {
+  width: 21px;
+  height: 21px;
+}
+
+.venue-text {
+  text-align: left;
+}
+
+.venue-text strong {
+  display: block;
+  color: var(--brown);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.countdown {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.count-box {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.76), rgba(255,250,241,0.58));
+  padding: 30px 18px 26px;
+  border-radius: 24px;
+  border: 1px solid rgba(198,164,106,0.20);
+  box-shadow: 0 14px 34px rgba(59,43,36,0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+.count-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 26px;
+  right: 26px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.count-box h3 {
+  font-size: clamp(34px, 4vw, 52px);
+  font-family: 'Cinzel', serif;
+  color: var(--brown);
+  font-weight: 600;
+  line-height: 1;
+}
+
+.count-box span {
+  display: block;
+  margin-top: 12px;
+  letter-spacing: 2.5px;
+  font-size: 11px;
+  text-transform: uppercase;
+  color: #8a5d3b;
+  font-weight: 600;
+}
 
 /* =========================================
    EVENTS SECTION
@@ -1014,11 +1177,64 @@ z-index:1;
 .member-name {
   font-size: 16px;
 }
-.save-date-section{padding:80px 5%;}
-.save-date-card{padding:50px 30px;}
-.save-date-card h2{font-size:42px;}
-.count-box{padding:25px 10px;}
-.count-box h3{font-size:40px;}
+.save-date-section {
+  padding: 70px 5% 82px;
+}
+
+.save-date-card {
+  padding: 50px 28px 44px;
+  border-radius: 30px;
+}
+
+.save-date-card::before {
+  inset: 12px;
+  border-radius: 22px;
+}
+
+.save-date-card h2 {
+  font-size: 42px;
+}
+
+.save-date-line {
+  margin: 24px auto 24px;
+}
+
+.venue {
+  gap: 12px;
+}
+
+.venue-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.venue-text strong {
+  font-size: 16px;
+}
+
+.venue-text {
+  font-size: 14px;
+}
+
+.countdown {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.count-box {
+  padding: 25px 10px 22px;
+  border-radius: 20px;
+}
+
+.count-box h3 {
+  font-size: 38px;
+}
+
+.count-box span {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
 .events-section{padding:80px 5%;}
 .events-timeline::before{left:20px;}
 .event-item{flex-direction:column!important;align-items:flex-start;padding-left:50px;}
@@ -1121,8 +1337,64 @@ z-index:1;
 .member-name {
   font-size: 15px;
 }
-.save-date-card h2{font-size:34px;}
-.count-box h3{font-size:32px;}
+.save-date-section {
+  padding: 70px 5% 82px;
+}
+
+.save-date-card {
+  padding: 50px 28px 44px;
+  border-radius: 30px;
+}
+
+.save-date-card::before {
+  inset: 12px;
+  border-radius: 22px;
+}
+
+.save-date-card h2 {
+  font-size: 42px;
+}
+
+.save-date-line {
+  margin: 24px auto 24px;
+}
+
+.venue {
+  gap: 12px;
+}
+
+.venue-icon {
+  width: 38px;
+  height: 38px;
+}
+
+.venue-text strong {
+  font-size: 16px;
+}
+
+.venue-text {
+  font-size: 14px;
+}
+
+.countdown {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 38px;
+}
+
+.count-box {
+  padding: 25px 10px 22px;
+  border-radius: 20px;
+}
+
+.count-box h3 {
+  font-size: 38px;
+}
+
+.count-box span {
+  font-size: 10px;
+  letter-spacing: 2px;
+}
 .countdown{grid-template-columns:1fr 1fr;gap:15px;}
 .event-card{padding:30px 25px;}
 .event-card h3{font-size:22px;}
@@ -1261,29 +1533,54 @@ we warmly invite you to celebrate our wedding.
 </section>
 <!-- SAVE THE DATE SECTION -->
 <section class="save-date-section" id="saveDateSection">
-<div class="save-date-card">
-<p class="save-tag">SAVE THE DATE</p>
-<h2>07 June 2026</h2>
-<p class="venue">📍 SOP Marriage Hall<br>Sivakasi, Tamil Nadu</p>
-<div class="countdown">
-<div class="count-box">
-<h3 id="days">00</h3>
-<span>Days</span>
-</div>
-<div class="count-box">
-<h3 id="hours">00</h3>
-<span>Hours</span>
-</div>
-<div class="count-box">
-<h3 id="minutes">00</h3>
-<span>Minutes</span>
-</div>
-<div class="count-box">
-<h3 id="seconds">00</h3>
-<span>Seconds</span>
-</div>
-</div>
-</div>
+  <div class="save-date-card">
+
+    <p class="save-tag">SAVE THE DATE</p>
+
+    <h2>07 June 2026</h2>
+
+    <div class="save-date-line"></div>
+
+    <div class="venue">
+      <span class="venue-icon" aria-hidden="true">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 21h16"></path>
+          <path d="M6 21V9l6-4 6 4v12"></path>
+          <path d="M9 21v-7h6v7"></path>
+          <path d="M9 10h.01"></path>
+          <path d="M15 10h.01"></path>
+        </svg>
+      </span>
+
+      <span class="venue-text">
+        <strong>SOP Marriage Hall</strong>
+        Sivakasi, Tamil Nadu
+      </span>
+    </div>
+
+    <div class="countdown">
+      <div class="count-box">
+        <h3 id="days">00</h3>
+        <span>Days</span>
+      </div>
+
+      <div class="count-box">
+        <h3 id="hours">00</h3>
+        <span>Hours</span>
+      </div>
+
+      <div class="count-box">
+        <h3 id="minutes">00</h3>
+        <span>Minutes</span>
+      </div>
+
+      <div class="count-box">
+        <h3 id="seconds">00</h3>
+        <span>Seconds</span>
+      </div>
+    </div>
+
+  </div>
 </section>
 
 <!-- EVENTS SECTION -->
