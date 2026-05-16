@@ -547,184 +547,6 @@ animation:fadeUp 1s 3.2s ease forwards;
 }
 
 /* =========================================
-   FAMILY SECTION - LUXURY STYLE
-========================================= */
-.family-section {
-  padding: 90px 7% 70px;
-  background:
-    radial-gradient(circle at top left, rgba(198,164,106,0.14), transparent 32%),
-    radial-gradient(circle at bottom right, rgba(182,122,107,0.10), transparent 34%),
-    var(--ivory);
-  visibility: hidden;
-  opacity: 0;
-}
-
-.family-section.visible {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity 0.8s ease;
-}
-
-.family-quote {
-  text-align: center;
-  margin-bottom: 52px;
-}
-
-.quote-ornament {
-  color: var(--gold);
-  font-size: 17px;
-  letter-spacing: 8px;
-  margin: 12px 0;
-}
-
-.quote-text {
-  font-family: 'Great Vibes', cursive;
-  font-size: 38px;
-  color: #5e3f32;
-  line-height: 1.45;
-  max-width: 780px;
-  margin: 0 auto;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.quote-text.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.family-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 34px;
-  max-width: 1040px;
-  margin: 0 auto;
-}
-
-.family-card {
-  position: relative;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,250,241,0.62));
-  backdrop-filter: blur(12px);
-  padding: 48px 38px 44px;
-  border-radius: 34px;
-  border: 1px solid rgba(198,164,106,0.28);
-  box-shadow:
-    0 22px 60px rgba(59,43,36,0.08),
-    inset 0 1px 0 rgba(255,255,255,0.75);
-  text-align: center;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
-}
-
-.family-card.show {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-.family-card:hover {
-  box-shadow:
-    0 28px 75px rgba(59,43,36,0.12),
-    inset 0 1px 0 rgba(255,255,255,0.8);
-}
-
-.family-card::before {
-  content: '';
-  position: absolute;
-  inset: 16px;
-  border: 1px solid rgba(198,164,106,0.20);
-  border-radius: 24px;
-  pointer-events: none;
-}
-
-.family-card::after {
-  content: '';
-  position: absolute;
-  width: 160px;
-  height: 160px;
-  right: -58px;
-  top: -58px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(198,164,106,0.18), transparent 68%);
-  pointer-events: none;
-}
-
-.family-icon {
-  width: 74px;
-  height: 74px;
-  margin: 0 auto 22px;
-  border-radius: 50%;
-  background:
-    linear-gradient(135deg, rgba(198,164,106,0.24), rgba(255,255,255,0.68));
-  border: 1px solid rgba(198,164,106,0.36);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #8a5d3b;
-  font-family: 'Cinzel', serif;
-  font-size: 28px;
-  font-weight: 600;
-  box-shadow: 0 12px 30px rgba(198,164,106,0.16);
-  position: relative;
-  z-index: 2;
-}
-
-.family-icon::before {
-  content: '';
-  position: absolute;
-  inset: 8px;
-  border: 1px solid rgba(138,93,59,0.18);
-  border-radius: 50%;
-}
-
-.family-card h3 {
-  position: relative;
-  z-index: 2;
-  font-family: 'Cinzel', serif;
-  font-size: 26px;
-  font-weight: 600;
-  color: var(--brown);
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
-}
-
-.family-divider {
-  position: relative;
-  z-index: 2;
-  width: 72px;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--gold), transparent);
-  margin: 20px auto 24px;
-}
-
-.family-member {
-  position: relative;
-  z-index: 2;
-  margin-top: 15px;
-  display: flex;
-  align-items: baseline;
-  justify-content: center;
-  gap: 10px;
-}
-
-.member-role {
-  font-size: 13px;
-  color: var(--rose);
-  font-weight: 600;
-  min-width: 32px;
-}
-
-.member-name {
-  font-size: 18px;
-  font-weight: 500;
-  color: var(--brown);
-  line-height: 1.45;
-}
-
-/* =========================================
    EVENTS SECTION - ELEGANT CARD LAYOUT
 ========================================= */
 .events-section {
@@ -961,77 +783,6 @@ animation:fadeUp 1s 3.2s ease forwards;
 }
 
 /* =========================================
-   GALLERY SECTION
-========================================= */
-.gallery-section{
-padding:120px 7%;
-background:linear-gradient(180deg,#f1dfc3,#f7efe3);
-visibility:hidden;
-opacity:0;
-}
-.gallery-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
-.gallery-header{text-align:center;margin-bottom:60px;}
-.gallery-header h2{font-family:'Cinzel',serif;font-size:48px;color:var(--brown);}
-.gallery-header p{margin-top:12px;font-size:16px;color:#705e54;font-family:'Great Vibes',cursive;font-size:24px;}
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
-max-width:1000px;
-margin:0 auto;
-}
-.gallery-item{
-position:relative;
-border-radius:20px;
-overflow:hidden;
-aspect-ratio:4/5;
-opacity:0;
-transform:translateY(40px);
-transition:opacity 0.8s ease,transform 0.8s ease;
-}
-.gallery-item.show{opacity:1;transform:translateY(0);}
-.gallery-item img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:transform 0.6s ease;
-}
-.gallery-item:hover img{
-transform:scale(1.05);
-}
-.gallery-item::after{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(transparent 60%,rgba(28,18,14,0.4));
-pointer-events:none;
-}
-.gallery-item .gallery-caption{
-position:absolute;
-bottom:20px;
-left:20px;
-right:20px;
-color:var(--white);
-font-family:'Great Vibes',cursive;
-font-size:22px;
-z-index:2;
-opacity:0;
-transform:translateY(10px);
-transition:opacity 0.4s ease,transform 0.4s ease;
-}
-.gallery-item:hover .gallery-caption{
-opacity:1;
-transform:translateY(0);
-}
-.gallery-frame{
-position:absolute;
-inset:12px;
-border:1px solid rgba(198,164,106,0.4);
-border-radius:14px;
-pointer-events:none;
-z-index:1;
-}
-/* =========================================
    LOCATION SECTION
 ========================================= */
 .location-section {
@@ -1106,6 +857,256 @@ z-index:1;
 .map-btn:hover {
   transform: translateY(-4px);
   box-shadow: 0 18px 45px rgba(59,43,36,0.24);
+}
+   
+/* =========================================
+   FAMILY SECTION - LUXURY STYLE
+========================================= */
+.family-section {
+  padding: 90px 7% 70px;
+  background:
+    radial-gradient(circle at top left, rgba(198,164,106,0.14), transparent 32%),
+    radial-gradient(circle at bottom right, rgba(182,122,107,0.10), transparent 34%),
+    var(--ivory);
+  visibility: hidden;
+  opacity: 0;
+}
+
+.family-section.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.8s ease;
+}
+
+.family-quote {
+  text-align: center;
+  margin-bottom: 52px;
+}
+
+.quote-ornament {
+  color: var(--gold);
+  font-size: 17px;
+  letter-spacing: 8px;
+  margin: 12px 0;
+}
+
+.quote-text {
+  font-family: 'Great Vibes', cursive;
+  font-size: 38px;
+  color: #5e3f32;
+  line-height: 1.45;
+  max-width: 780px;
+  margin: 0 auto;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.quote-text.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.family-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 34px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+.family-card {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.78), rgba(255,250,241,0.62));
+  backdrop-filter: blur(12px);
+  padding: 48px 38px 44px;
+  border-radius: 34px;
+  border: 1px solid rgba(198,164,106,0.28);
+  box-shadow:
+    0 22px 60px rgba(59,43,36,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.75);
+  text-align: center;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease, box-shadow 0.4s ease;
+}
+
+.family-card.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.family-card:hover {
+  box-shadow:
+    0 28px 75px rgba(59,43,36,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.8);
+}
+
+.family-card::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(198,164,106,0.20);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.family-card::after {
+  content: '';
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  right: -58px;
+  top: -58px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,164,106,0.18), transparent 68%);
+  pointer-events: none;
+}
+
+.family-icon {
+  width: 74px;
+  height: 74px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(198,164,106,0.24), rgba(255,255,255,0.68));
+  border: 1px solid rgba(198,164,106,0.36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a5d3b;
+  font-family: 'Cinzel', serif;
+  font-size: 28px;
+  font-weight: 600;
+  box-shadow: 0 12px 30px rgba(198,164,106,0.16);
+  position: relative;
+  z-index: 2;
+}
+
+.family-icon::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border: 1px solid rgba(138,93,59,0.18);
+  border-radius: 50%;
+}
+
+.family-card h3 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 26px;
+  font-weight: 600;
+  color: var(--brown);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+
+.family-divider {
+  position: relative;
+  z-index: 2;
+  width: 72px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 20px auto 24px;
+}
+
+.family-member {
+  position: relative;
+  z-index: 2;
+  margin-top: 15px;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 10px;
+}
+
+.member-role {
+  font-size: 13px;
+  color: var(--rose);
+  font-weight: 600;
+  min-width: 32px;
+}
+
+.member-name {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--brown);
+  line-height: 1.45;
+}
+
+/* =========================================
+   GALLERY SECTION
+========================================= */
+.gallery-section{
+padding:120px 7%;
+background:linear-gradient(180deg,#f1dfc3,#f7efe3);
+visibility:hidden;
+opacity:0;
+}
+.gallery-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
+.gallery-header{text-align:center;margin-bottom:60px;}
+.gallery-header h2{font-family:'Cinzel',serif;font-size:48px;color:var(--brown);}
+.gallery-header p{margin-top:12px;font-size:16px;color:#705e54;font-family:'Great Vibes',cursive;font-size:24px;}
+.gallery-grid{
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:30px;
+max-width:1000px;
+margin:0 auto;
+}
+.gallery-item{
+position:relative;
+border-radius:20px;
+overflow:hidden;
+aspect-ratio:4/5;
+opacity:0;
+transform:translateY(40px);
+transition:opacity 0.8s ease,transform 0.8s ease;
+}
+.gallery-item.show{opacity:1;transform:translateY(0);}
+.gallery-item img{
+width:100%;
+height:100%;
+object-fit:cover;
+transition:transform 0.6s ease;
+}
+.gallery-item:hover img{
+transform:scale(1.05);
+}
+.gallery-item::after{
+content:'';
+position:absolute;
+inset:0;
+background:linear-gradient(transparent 60%,rgba(28,18,14,0.4));
+pointer-events:none;
+}
+.gallery-item .gallery-caption{
+position:absolute;
+bottom:20px;
+left:20px;
+right:20px;
+color:var(--white);
+font-family:'Great Vibes',cursive;
+font-size:22px;
+z-index:2;
+opacity:0;
+transform:translateY(10px);
+transition:opacity 0.4s ease,transform 0.4s ease;
+}
+.gallery-item:hover .gallery-caption{
+opacity:1;
+transform:translateY(0);
+}
+.gallery-frame{
+position:absolute;
+inset:12px;
+border:1px solid rgba(198,164,106,0.4);
+border-radius:14px;
+pointer-events:none;
+z-index:1;
 }
 
 /* =========================================
@@ -1827,6 +1828,80 @@ we warmly invite you to celebrate our wedding.
 
   </div>
 </section>
+
+<!-- EVENTS SECTION -->
+<section class="events-section" id="eventsSection">
+
+  <div class="events-header">
+    <div class="events-kicker">Celebrate With Us</div>
+    <h2>
+      Wedding <span class="events-title-word">Moments</span>
+    </h2>
+  </div>
+
+  <div class="events-timeline">
+
+    <div class="event-item">
+      <div class="event-card">
+        <div class="event-icon">01</div>
+
+        <h3>Reception</h3>
+
+        <div class="event-meta">
+          <div class="event-date">06 June 2026</div>
+          <div class="event-time">6:30 PM onwards</div>
+        </div>
+
+        <div class="event-venue">
+          <strong>SOP Marriage Hall</strong>
+          Sivakasi, Tamil Nadu
+        </div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="event-card">
+        <div class="event-icon">02</div>
+
+        <h3>Muhurtham</h3>
+
+        <div class="event-meta">
+          <div class="event-date">07 June 2026</div>
+          <div class="event-time">7:35 AM</div>
+        </div>
+
+        <div class="event-venue">
+          <strong>SOP Marriage Hall</strong>
+          Sivakasi, Tamil Nadu
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- LOCATION SECTION -->
+<section class="location-section" id="locationSection">
+  <div class="location-card">
+    <p class="section-kicker">WEDDING VENUE</p>
+
+    <h2>SOP Marriage Hall</h2>
+
+    <p class="location-text">
+      Sivakasi, Tamil Nadu
+    </p>
+
+    <a
+      href="https://www.google.com/maps/search/?api=1&query=SOP%20Marriage%20Hall%20Sivakasi%20Tamil%20Nadu"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="map-btn"
+    >
+      Open Location
+    </a>
+  </div>
+</section>
+   
 <!-- FAMILY SECTION -->
 <section class="family-section" id="familySection">
 
@@ -1880,56 +1955,6 @@ we warmly invite you to celebrate our wedding.
   </div>
 </section>
 
-<!-- EVENTS SECTION -->
-<section class="events-section" id="eventsSection">
-
-  <div class="events-header">
-    <div class="events-kicker">Celebrate With Us</div>
-    <h2>
-      Wedding <span class="events-title-word">Moments</span>
-    </h2>
-  </div>
-
-  <div class="events-timeline">
-
-    <div class="event-item">
-      <div class="event-card">
-        <div class="event-icon">01</div>
-
-        <h3>Reception</h3>
-
-        <div class="event-meta">
-          <div class="event-date">06 June 2026</div>
-          <div class="event-time">6:30 PM onwards</div>
-        </div>
-
-        <div class="event-venue">
-          <strong>SOP Marriage Hall</strong>
-          Sivakasi, Tamil Nadu
-        </div>
-      </div>
-    </div>
-
-    <div class="event-item">
-      <div class="event-card">
-        <div class="event-icon">02</div>
-
-        <h3>Muhurtham</h3>
-
-        <div class="event-meta">
-          <div class="event-date">07 June 2026</div>
-          <div class="event-time">7:35 AM</div>
-        </div>
-
-        <div class="event-venue">
-          <strong>SOP Marriage Hall</strong>
-          Sivakasi, Tamil Nadu
-        </div>
-      </div>
-    </div>
-
-  </div>
-</section>
 <!-- GALLERY SECTION -->
 <section class="gallery-section" id="gallerySection">
 <div class="gallery-header">
@@ -1948,28 +1973,6 @@ we warmly invite you to celebrate our wedding.
 <span class="gallery-caption">Written in the stars</span>
 </div>
 </div>
-</section>
-
-<!-- LOCATION SECTION -->
-<section class="location-section" id="locationSection">
-  <div class="location-card">
-    <p class="section-kicker">WEDDING VENUE</p>
-
-    <h2>SOP Marriage Hall</h2>
-
-    <p class="location-text">
-      Sivakasi, Tamil Nadu
-    </p>
-
-    <a
-      href="https://www.google.com/maps/search/?api=1&query=SOP%20Marriage%20Hall%20Sivakasi%20Tamil%20Nadu"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="map-btn"
-    >
-      Open Location
-    </a>
-  </div>
 </section>
 
 <!-- FOOTER SECTION -->
