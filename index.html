@@ -1257,41 +1257,53 @@ animation:fadeUp 1s 3.2s ease forwards;
   height: 3px;
   width: 0%;
   background: linear-gradient(90deg, #8a5d3b, #c6a46a, #f1dfc3);
-  z-index: 9998;
+  z-index: 10000;
   opacity: 0;
   transition: width 0.1s linear, opacity 0.3s ease;
+}
+
+.scroll-progress.active {
+  opacity: 1;
 }
 
 .scroll-next-btn {
   position: fixed;
   right: 18px;
   bottom: 22px;
-  z-index: 9997;
-  display: none;
-  align-items: center;
-  gap: 7px;
-  border: 1px solid rgba(198,164,106,0.35);
-  background: rgba(255,250,241,0.88);
+  z-index: 10000;
+  width: 52px;
+  height: 52px;
+  border: 1px solid rgba(198,164,106,0.45);
+  background: rgba(255,250,241,0.94);
   color: #5e3f32;
-  padding: 11px 15px;
-  border-radius: 999px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.8px;
-  box-shadow: 0 12px 32px rgba(59,43,36,0.16);
+  border-radius: 50%;
+  box-shadow: 0 12px 32px rgba(59,43,36,0.18);
   backdrop-filter: blur(10px);
   cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   opacity: 0;
+  pointer-events: none;
   transform: translateY(20px);
   transition: opacity 0.35s ease, transform 0.35s ease;
 }
 
 .scroll-next-btn.show {
   opacity: 1;
+  pointer-events: auto;
   transform: translateY(0);
 }
 
+.scroll-next-btn span {
+  display: none;
+}
+
 .scroll-next-btn svg {
+  width: 22px;
+  height: 22px;
   animation: scrollArrowBounce 1.4s ease-in-out infinite;
 }
 
@@ -1300,21 +1312,12 @@ animation:fadeUp 1s 3.2s ease forwards;
     transform: translateY(0);
   }
   50% {
-    transform: translateY(4px);
+    transform: translateY(5px);
   }
 }
 
-@media(max-width:768px) {
-  .scroll-next-btn {
-    display: inline-flex;
-  }
-
-  .scroll-progress.active {
-    opacity: 1;
-  }
-}
-
-@media(min-width:769px) {
+/* Hide scroll button only on large desktop */
+@media(min-width:992px) {
   .scroll-next-btn,
   .scroll-progress {
     display: none;
