@@ -14,9 +14,7 @@ html{scroll-behavior:smooth;}
 body{font-family:'Poppins',sans-serif;background:#f7efe3;color:#3b2b24;overflow:hidden;}
 :root{--gold:#c6a46a;--brown:#3b2b24;--white:#ffffff;--ivory:#f7efe3;--rose:#b67a6b;}
 
-/* =========================================
-   OPENING SCREEN
-========================================= */
+/* OPENING SCREEN */
 .opening-screen{
 position:fixed;inset:0;width:100%;height:100vh;z-index:9999;
 display:flex;align-items:center;justify-content:center;overflow:hidden;
@@ -126,9 +124,7 @@ transition:transform 0.4s ease,box-shadow 0.4s ease;
 .hide-opening{opacity:0;pointer-events:none;visibility:hidden;transition:opacity 1.2s ease,visibility 0s 1.2s;}
 @keyframes fadeUp{from{opacity:0;transform:translateY(40px);}to{opacity:1;transform:translateY(0);}}
 
-/* =========================================
-   HERO SECTION
-========================================= */
+/* HERO SECTION */
 .hero-section{position:relative;height:100vh;overflow:hidden;visibility:hidden;}
 .hero-section.visible{visibility:visible;}
 .hero-image{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 0.1s linear;}
@@ -150,9 +146,7 @@ text-align:center;color:var(--white);padding:20px;
 .hero-section.visible .hero-title{opacity:1;transform:translateY(0);}
 .hero-section.visible .hero-divider{opacity:1;transform:scaleX(1);}
 
-/* =========================================
-   FAMILY SECTION
-========================================= */
+/* FAMILY SECTION */
 .family-section{padding:100px 7%;background:var(--ivory);visibility:hidden;opacity:0;}
 .family-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
 .family-quote{text-align:center;margin-bottom:70px;}
@@ -178,9 +172,7 @@ opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s
 .member-role{font-size:14px;color:var(--rose);font-weight:500;min-width:30px;}
 .member-name{font-size:18px;font-weight:500;color:var(--brown);}
 
-/* =========================================
-   SAVE THE DATE SECTION
-========================================= */
+/* SAVE THE DATE SECTION */
 .save-date-section{padding:120px 7%;background:linear-gradient(180deg,#f7efe3,#f1dfc3);visibility:hidden;opacity:0;}
 .save-date-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
 .save-date-card{
@@ -203,9 +195,35 @@ box-shadow:0 10px 30px rgba(0,0,0,0.05);position:relative;overflow:hidden;
 .count-box h3{font-size:58px;font-family:'Cinzel',serif;color:var(--brown);}
 .count-box span{display:block;margin-top:10px;letter-spacing:2px;font-size:12px;text-transform:uppercase;color:#705e54;}
 
-/* =========================================
-   EVENTS SECTION
-========================================= */
+/* VENUE ACTION CARDS */
+.venue-actions{
+display:flex;justify-content:center;gap:24px;margin-top:50px;flex-wrap:wrap;
+}
+.venue-card{
+display:flex;flex-direction:column;align-items:center;justify-content:center;
+gap:14px;padding:40px 50px;
+background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);
+border-radius:25px;border:1px solid rgba(198,164,106,0.2);
+box-shadow:0 10px 30px rgba(0,0,0,0.05);
+text-decoration:none;cursor:pointer;
+transition:transform 0.3s ease,box-shadow 0.3s ease,border-color 0.3s ease;
+min-width:200px;
+}
+.venue-card:hover{
+transform:translateY(-5px);
+box-shadow:0 16px 40px rgba(0,0,0,0.1);
+border-color:rgba(198,164,106,0.5);
+}
+.venue-card-icon{
+width:56px;height:56px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;font-size:24px;
+}
+.venue-card-icon.map-icon{background:linear-gradient(135deg,var(--brown),#5a4a3e);color:var(--white);}
+.venue-card-icon.cal-icon{background:linear-gradient(135deg,var(--gold),#e8c97a);color:#1a0f0a;}
+.venue-card-title{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--brown);letter-spacing:1px;}
+.venue-card-subtitle{font-size:12px;color:#705e54;}
+
+/* EVENTS SECTION */
 .events-section{padding:120px 7%;background:var(--ivory);visibility:hidden;opacity:0;}
 .events-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
 .events-header{text-align:center;margin-bottom:70px;}
@@ -240,81 +258,30 @@ box-shadow:0 10px 30px rgba(0,0,0,0.05);
 .event-venue{font-size:14px;color:var(--brown);line-height:1.7;padding-top:14px;border-top:1px solid rgba(198,164,106,0.2);}
 .event-venue strong{display:block;font-size:15px;margin-bottom:4px;}
 
-/* =========================================
-   GALLERY SECTION
-========================================= */
-.gallery-section{
-padding:120px 7%;
-background:linear-gradient(180deg,#f1dfc3,#f7efe3);
-visibility:hidden;
-opacity:0;
-}
+/* GALLERY SECTION */
+.gallery-section{padding:120px 7%;background:linear-gradient(180deg,#f1dfc3,#f7efe3);visibility:hidden;opacity:0;}
 .gallery-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
 .gallery-header{text-align:center;margin-bottom:60px;}
 .gallery-header h2{font-family:'Cinzel',serif;font-size:48px;color:var(--brown);}
-.gallery-header p{margin-top:12px;font-size:16px;color:#705e54;font-family:'Great Vibes',cursive;font-size:24px;}
-.gallery-grid{
-display:grid;
-grid-template-columns:repeat(2,1fr);
-gap:30px;
-max-width:1000px;
-margin:0 auto;
-}
+.gallery-header p{margin-top:12px;font-family:'Great Vibes',cursive;font-size:24px;color:#705e54;}
+.gallery-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:30px;max-width:1000px;margin:0 auto;}
 .gallery-item{
-position:relative;
-border-radius:20px;
-overflow:hidden;
-aspect-ratio:4/5;
-opacity:0;
-transform:translateY(40px);
-transition:opacity 0.8s ease,transform 0.8s ease;
+position:relative;border-radius:20px;overflow:hidden;aspect-ratio:4/5;
+opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;
 }
 .gallery-item.show{opacity:1;transform:translateY(0);}
-.gallery-item img{
-width:100%;
-height:100%;
-object-fit:cover;
-transition:transform 0.6s ease;
-}
-.gallery-item:hover img{
-transform:scale(1.05);
-}
-.gallery-item::after{
-content:'';
-position:absolute;
-inset:0;
-background:linear-gradient(transparent 60%,rgba(28,18,14,0.4));
-pointer-events:none;
-}
+.gallery-item img{width:100%;height:100%;object-fit:cover;transition:transform 0.6s ease;}
+.gallery-item:hover img{transform:scale(1.05);}
+.gallery-item::after{content:'';position:absolute;inset:0;background:linear-gradient(transparent 60%,rgba(28,18,14,0.4));pointer-events:none;}
 .gallery-item .gallery-caption{
-position:absolute;
-bottom:20px;
-left:20px;
-right:20px;
-color:var(--white);
-font-family:'Great Vibes',cursive;
-font-size:22px;
-z-index:2;
-opacity:0;
-transform:translateY(10px);
-transition:opacity 0.4s ease,transform 0.4s ease;
+position:absolute;bottom:20px;left:20px;right:20px;
+color:var(--white);font-family:'Great Vibes',cursive;font-size:22px;z-index:2;
+opacity:0;transform:translateY(10px);transition:opacity 0.4s ease,transform 0.4s ease;
 }
-.gallery-item:hover .gallery-caption{
-opacity:1;
-transform:translateY(0);
-}
-.gallery-frame{
-position:absolute;
-inset:12px;
-border:1px solid rgba(198,164,106,0.4);
-border-radius:14px;
-pointer-events:none;
-z-index:1;
-}
+.gallery-item:hover .gallery-caption{opacity:1;transform:translateY(0);}
+.gallery-frame{position:absolute;inset:12px;border:1px solid rgba(198,164,106,0.4);border-radius:14px;pointer-events:none;z-index:1;}
 
-/* =========================================
-   RESPONSIVE
-========================================= */
+/* RESPONSIVE */
 @media(max-width:992px){
 .couple-names{font-size:62px;}
 .amp-symbol{font-size:42px;}
@@ -359,6 +326,7 @@ z-index:1;
 .gallery-section{padding:80px 5%;}
 .gallery-grid{gap:20px;}
 .gallery-header h2{font-size:34px;}
+.venue-actions{flex-direction:column;align-items:center;}
 }
 @media(max-width:480px){
 .couple-names{font-size:36px;}
@@ -382,9 +350,11 @@ z-index:1;
 .event-card h3{font-size:22px;}
 .gallery-grid{grid-template-columns:1fr;gap:20px;}
 .gallery-item{aspect-ratio:3/4;}
+.venue-card{width:100%;padding:30px 20px;}
 }
 </style>
 </head>
+   
 <body>
 
 <!-- OPENING SCREEN -->
@@ -502,6 +472,18 @@ Rajarajeshwari
 <h3 id="seconds">00</h3>
 <span>Seconds</span>
 </div>
+</div>
+<div class="venue-actions">
+<a href="https://maps.app.goo.gl/WCAVZjt6sgVD9Ecm8" target="_blank" rel="noopener" class="venue-card">
+<div class="venue-card-icon map-icon">📍</div>
+<span class="venue-card-title">View Map</span>
+<span class="venue-card-subtitle">Get Directions</span>
+</a>
+<button type="button" class="venue-card" id="addCalendarBtn">
+<div class="venue-card-icon cal-icon">📅</div>
+<span class="venue-card-title">Add to Calendar</span>
+<span class="venue-card-subtitle">Muhurtham · 7:35 AM</span>
+</button>
 </div>
 </div>
 </section>
@@ -627,19 +609,32 @@ secondsEl.innerHTML=pad(Math.floor((dist%(1000*60))/1000));
 }
 updateCountdown();
 setInterval(updateCountdown,1000);
+// Add to Calendar (.ics download)
+document.getElementById("addCalendarBtn").onclick=function(){
+var icsContent=[
+"BEGIN:VCALENDAR",
+"VERSION:2.0",
+"PRODID:-//Wedding//EN",
+"BEGIN:VEVENT",
+"DTSTART:20260607T020500Z",
+"DTEND:20260607T043500Z",
+"SUMMARY:Muhurtham - Padalingam & Rajarajeshwari Wedding",
+"LOCATION:SOP Marriage Hall\\, Sivakasi\\, Tamil Nadu",
+"DESCRIPTION:You are invited to witness the Muhurtham of Padalingam & Rajarajeshwari at SOP Marriage Hall\\, Sivakasi.",
+"END:VEVENT",
+"END:VCALENDAR"
+].join("\r
+");
+var blob=new Blob([icsContent],{type:"text/calendar;charset=utf-8"});
+var link=document.createElement("a");
+link.href=URL.createObjectURL(blob);
+link.download="wedding-muhurtham.ics";
+link.click();
+URL.revokeObjectURL(link.href);
+};
 });
 </script>
-<div class="venue-actions">
-<a href="https://maps.app.goo.gl/WCAVZjt6sgVD9Ecm8" target="_blank" rel="noopener" class="venue-card">
-<div class="venue-card-icon map-icon">📍</div>
-<span class="venue-card-title">View Map</span>
-<span class="venue-card-subtitle">Get Directions</span>
-</a>
-<button type="button" class="venue-card" id="addCalendarBtn">
-<div class="venue-card-icon cal-icon">📅</div>
-<span class="venue-card-title">Add to Calendar</span>
-<span class="venue-card-subtitle">Muhurtham · 7:35 AM</span>
-</button>
-</div>
 </body>
 </html>
+
+
