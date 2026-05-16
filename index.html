@@ -724,41 +724,240 @@ animation:fadeUp 1s 3.2s ease forwards;
 }
 
 /* =========================================
-   EVENTS SECTION
+   EVENTS SECTION - ELEGANT CARD LAYOUT
 ========================================= */
-.events-section{padding:120px 7%;background:var(--ivory);visibility:hidden;opacity:0;}
-.events-section.visible{visibility:visible;opacity:1;transition:opacity 0.8s ease;}
-.events-header{text-align:center;margin-bottom:70px;}
-.events-header h2{font-family:'Cinzel',serif;font-size:48px;color:var(--brown);}
-.events-header p{margin-top:12px;font-size:16px;color:#705e54;}
-.events-timeline{max-width:900px;margin:0 auto;position:relative;}
-.events-timeline::before{
-content:'';position:absolute;left:50%;top:0;bottom:0;width:2px;
-background:linear-gradient(180deg,var(--gold),rgba(198,164,106,0.2));transform:translateX(-50%);
+.events-section {
+  padding: 95px 7% 105px;
+  background:
+    radial-gradient(circle at top right, rgba(198,164,106,0.14), transparent 34%),
+    linear-gradient(180deg, #f7efe3 0%, #fffaf1 50%, #f7efe3 100%);
+  visibility: hidden;
+  opacity: 0;
 }
-.event-item{
-display:flex;align-items:center;margin-bottom:60px;position:relative;
-opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease;
+
+.events-section.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.8s ease;
 }
-.event-item.show{opacity:1;transform:translateY(0);}
-.event-item:nth-child(odd){flex-direction:row;}
-.event-item:nth-child(even){flex-direction:row-reverse;}
-.event-dot{
-position:absolute;left:50%;transform:translateX(-50%);
-width:20px;height:20px;background:var(--gold);border-radius:50%;
-border:4px solid var(--ivory);box-shadow:0 0 0 2px var(--gold);z-index:2;
+
+.events-header {
+  text-align: center;
+  margin-bottom: 56px;
 }
-.event-card{
-width:44%;background:rgba(255,255,255,0.7);backdrop-filter:blur(10px);
-padding:40px 35px;border-radius:25px;border:1px solid rgba(198,164,106,0.15);
-box-shadow:0 10px 30px rgba(0,0,0,0.05);
+
+.events-kicker {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  color: #8a5d3b;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-bottom: 18px;
 }
-.event-icon{font-size:36px;margin-bottom:16px;}
-.event-card h3{font-family:'Cinzel',serif;font-size:26px;color:var(--brown);margin-bottom:8px;}
-.event-date{font-size:15px;color:var(--gold);font-weight:600;margin-bottom:6px;}
-.event-time{font-size:14px;color:#705e54;margin-bottom:14px;}
-.event-venue{font-size:14px;color:var(--brown);line-height:1.7;padding-top:14px;border-top:1px solid rgba(198,164,106,0.2);}
-.event-venue strong{display:block;font-size:15px;margin-bottom:4px;}
+
+.events-kicker::before,
+.events-kicker::after {
+  content: '';
+  width: 46px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.events-kicker::after {
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+.events-header h2 {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(36px, 5vw, 54px);
+  line-height: 1.1;
+  color: var(--brown);
+  font-weight: 600;
+}
+
+.events-title-word {
+  display: inline-block;
+  position: relative;
+}
+
+.events-title-word::after {
+  content: '';
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  bottom: -8px;
+  height: 8px;
+  background: rgba(198,164,106,0.22);
+  border-radius: 999px;
+  z-index: -1;
+}
+
+.events-timeline {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 34px;
+  position: relative;
+}
+
+.events-timeline::before {
+  display: none;
+}
+
+.event-item {
+  position: relative;
+  display: block;
+  margin-bottom: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.event-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.event-dot {
+  display: none;
+}
+
+.event-card {
+  width: 100%;
+  min-height: 100%;
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,250,241,0.64));
+  backdrop-filter: blur(12px);
+  padding: 46px 38px 42px;
+  border-radius: 34px;
+  border: 1px solid rgba(198,164,106,0.28);
+  box-shadow:
+    0 22px 62px rgba(59,43,36,0.08),
+    inset 0 1px 0 rgba(255,255,255,0.78);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 30px 78px rgba(59,43,36,0.12),
+    inset 0 1px 0 rgba(255,255,255,0.84);
+}
+
+.event-card::before {
+  content: '';
+  position: absolute;
+  inset: 16px;
+  border: 1px solid rgba(198,164,106,0.20);
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.event-card::after {
+  content: '';
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: -70px;
+  bottom: -70px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(198,164,106,0.18), transparent 70%);
+  pointer-events: none;
+}
+
+.event-icon {
+  width: 72px;
+  height: 72px;
+  margin: 0 auto 22px;
+  border-radius: 50%;
+  background:
+    linear-gradient(135deg, rgba(198,164,106,0.24), rgba(255,255,255,0.72));
+  border: 1px solid rgba(198,164,106,0.36);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8a5d3b;
+  font-family: 'Cinzel', serif;
+  font-size: 22px;
+  font-weight: 700;
+  box-shadow: 0 12px 30px rgba(198,164,106,0.16);
+  position: relative;
+  z-index: 2;
+}
+
+.event-icon::before {
+  content: '';
+  position: absolute;
+  inset: 8px;
+  border-radius: 50%;
+  border: 1px solid rgba(138,93,59,0.18);
+}
+
+.event-card h3 {
+  position: relative;
+  z-index: 2;
+  font-family: 'Cinzel', serif;
+  font-size: 30px;
+  color: var(--brown);
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+.event-meta {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.event-date,
+.event-time {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 15px;
+  color: #6c4632;
+  font-weight: 500;
+}
+
+.event-date::before,
+.event-time::before {
+  content: '';
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold);
+  box-shadow: 0 0 0 4px rgba(198,164,106,0.14);
+}
+
+.event-venue {
+  position: relative;
+  z-index: 2;
+  margin-top: 24px;
+  font-size: 14px;
+  color: #705e54;
+  line-height: 1.7;
+  padding-top: 24px;
+  border-top: 1px solid rgba(198,164,106,0.22);
+}
+
+.event-venue strong {
+  display: block;
+  font-size: 16px;
+  color: var(--brown);
+  margin-bottom: 4px;
+  font-weight: 600;
+}
 
 /* =========================================
    GALLERY SECTION
@@ -1235,12 +1434,64 @@ z-index:1;
   font-size: 10px;
   letter-spacing: 2px;
 }
-.events-section{padding:80px 5%;}
-.events-timeline::before{left:20px;}
-.event-item{flex-direction:column!important;align-items:flex-start;padding-left:50px;}
-.event-dot{left:20px;transform:translateX(-50%);}
-.event-card{width:100%;}
-.events-header h2{font-size:34px;}
+.events-section {
+  padding: 76px 5% 84px;
+}
+
+.events-header {
+  margin-bottom: 42px;
+}
+
+.events-kicker {
+  letter-spacing: 3px;
+  font-size: 10px;
+  gap: 10px;
+}
+
+.events-kicker::before,
+.events-kicker::after {
+  width: 32px;
+}
+
+.events-header h2 {
+  font-size: 36px;
+}
+
+.events-timeline {
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.event-card {
+  padding: 42px 28px 38px;
+  border-radius: 28px;
+}
+
+.event-card::before {
+  inset: 12px;
+  border-radius: 20px;
+}
+
+.event-icon {
+  width: 64px;
+  height: 64px;
+  font-size: 19px;
+  margin-bottom: 18px;
+}
+
+.event-card h3 {
+  font-size: 26px;
+}
+
+.event-date,
+.event-time {
+  font-size: 14px;
+}
+
+.event-venue {
+  margin-top: 22px;
+  padding-top: 22px;
+}
 .gallery-section{padding:80px 5%;}
 .gallery-grid{gap:20px;}
 .gallery-header h2{font-size:34px;}
@@ -1396,8 +1647,54 @@ z-index:1;
   letter-spacing: 2px;
 }
 .countdown{grid-template-columns:1fr 1fr;gap:15px;}
-.event-card{padding:30px 25px;}
-.event-card h3{font-size:22px;}
+.events-section {
+  padding: 68px 5% 76px;
+}
+
+.events-header h2 {
+  font-size: 31px;
+}
+
+.events-kicker {
+  letter-spacing: 2px;
+}
+
+.events-kicker::before,
+.events-kicker::after {
+  width: 24px;
+}
+
+.event-card {
+  padding: 38px 20px 34px;
+  border-radius: 24px;
+}
+
+.event-icon {
+  width: 58px;
+  height: 58px;
+  font-size: 17px;
+}
+
+.event-card h3 {
+  font-size: 23px;
+}
+
+.event-meta {
+  gap: 9px;
+}
+
+.event-date,
+.event-time {
+  font-size: 13.5px;
+}
+
+.event-venue {
+  font-size: 13.5px;
+}
+
+.event-venue strong {
+  font-size: 15px;
+}
 .gallery-grid{grid-template-columns:1fr;gap:20px;}
 .gallery-item{aspect-ratio:3/4;}
 }
@@ -1585,40 +1882,54 @@ we warmly invite you to celebrate our wedding.
 
 <!-- EVENTS SECTION -->
 <section class="events-section" id="eventsSection">
-<div class="events-header">
-<h2>Wedding Events</h2>
-<p>Join us as we celebrate our union</p>
-</div>
-<div class="events-timeline">
-<div class="event-item">
-<div class="event-dot"></div>
-<div class="event-card">
-<div class="event-icon">🎉</div>
-<h3>Reception</h3>
-<div class="event-date">06 June 2026</div>
-<div class="event-time">6:30 PM onwards</div>
-<div class="event-venue">
-<strong>SOP Marriage Hall</strong>
-Sivakasi, Tamil Nadu
-</div>
-</div>
-</div>
-<div class="event-item">
-<div class="event-dot"></div>
-<div class="event-card">
-<div class="event-icon">🔥</div>
-<h3>Muhurtham</h3>
-<div class="event-date">07 June 2026</div>
-<div class="event-time">7:35 AM</div>
-<div class="event-venue">
-<strong>SOP Marriage Hall</strong>
-Sivakasi, Tamil Nadu
-</div>
-</div>
-</div>
-</div>
-</section>
 
+  <div class="events-header">
+    <div class="events-kicker">Celebrate With Us</div>
+    <h2>
+      Wedding <span class="events-title-word">Moments</span>
+    </h2>
+  </div>
+
+  <div class="events-timeline">
+
+    <div class="event-item">
+      <div class="event-card">
+        <div class="event-icon">01</div>
+
+        <h3>Reception</h3>
+
+        <div class="event-meta">
+          <div class="event-date">06 June 2026</div>
+          <div class="event-time">6:30 PM onwards</div>
+        </div>
+
+        <div class="event-venue">
+          <strong>SOP Marriage Hall</strong>
+          Sivakasi, Tamil Nadu
+        </div>
+      </div>
+    </div>
+
+    <div class="event-item">
+      <div class="event-card">
+        <div class="event-icon">02</div>
+
+        <h3>Muhurtham</h3>
+
+        <div class="event-meta">
+          <div class="event-date">07 June 2026</div>
+          <div class="event-time">7:35 AM</div>
+        </div>
+
+        <div class="event-venue">
+          <strong>SOP Marriage Hall</strong>
+          Sivakasi, Tamil Nadu
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
 <!-- GALLERY SECTION -->
 <section class="gallery-section" id="gallerySection">
 <div class="gallery-header">
