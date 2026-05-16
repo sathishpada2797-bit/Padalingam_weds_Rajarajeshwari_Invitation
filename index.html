@@ -1247,7 +1247,66 @@ animation:fadeUp 1s 3.2s ease forwards;
   font-size: 13px;
   letter-spacing: 2px;
 }
+/* =========================================
+   HERO SCROLL BUTTON
+========================================= */
+.hero-scroll-btn {
+  position: absolute;
+  left: 50%;
+  bottom: 28px;
+  transform: translateX(-50%);
+  z-index: 5;
 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 11px 18px;
+  border-radius: 999px;
+  border: 1px solid rgba(198,164,106,0.42);
+  background: rgba(255,250,241,0.88);
+  color: #5e3f32;
+
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
+
+  box-shadow: 0 12px 32px rgba(59,43,36,0.16);
+  backdrop-filter: blur(10px);
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.hero-section.visible .hero-scroll-btn {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.hero-scroll-btn svg {
+  animation: heroScrollBounce 1.4s ease-in-out infinite;
+}
+
+@keyframes heroScrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+@media(max-width:480px) {
+  .hero-scroll-btn {
+    bottom: 18px;
+    padding: 10px 15px;
+    font-size: 11px;
+  }
+}
 /* =========================================
    RESPONSIVE
 ========================================= */
@@ -1929,6 +1988,12 @@ we warmly invite you to celebrate our wedding.
 
     </div>
   </div>
+<button class="hero-scroll-btn" id="heroScrollBtn" type="button" aria-label="Scroll to family section">
+  <span>Scroll Down</span>
+  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <path d="m6 9 6 6 6-6"></path>
+  </svg>
+</button>
 </section>
 
 <!-- FAMILY SECTION -->
@@ -2188,6 +2253,7 @@ var eventsSection=document.getElementById("eventsSection");
 var gallerySection=document.getElementById("gallerySection");
 var locationSection=document.getElementById("locationSection");
 var footerSection=document.getElementById("footerSection");
+var heroScrollBtn=document.getElementById("heroScrollBtn");
 openBtn.onclick=function(){
 openingScreen.classList.add("hide-opening");
 setTimeout(function(){
@@ -2246,6 +2312,19 @@ secondsEl.innerHTML=pad(Math.floor((dist%(1000*60))/1000));
 }
 updateCountdown();
 setInterval(updateCountdown,1000);
+});
+updateCountdown();
+setInterval(updateCountdown,1000);
+
+/* Hero scroll button */
+if(heroScrollBtn){
+  heroScrollBtn.addEventListener("click",function(){
+    if(familySection){
+      familySection.scrollIntoView({behavior:"smooth"});
+    }
+  });
+}
+
 });
 </script>
 </body>
