@@ -1248,50 +1248,51 @@ animation:fadeUp 1s 3.2s ease forwards;
   letter-spacing: 2px;
 }
 /* =========================================
-   HERO SCROLL BUTTON
+   SIMPLE HERO SCROLL CUE
 ========================================= */
-.hero-scroll-btn {
+.hero-scroll-cue {
   position: absolute;
   left: 50%;
-  bottom: 28px;
+  bottom: 24px;
   transform: translateX(-50%);
-  z-index: 5;
+  z-index: 10;
 
-  display: inline-flex;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
+  gap: 4px;
 
-  padding: 11px 18px;
-  border-radius: 999px;
-  border: 1px solid rgba(198,164,106,0.42);
-  background: rgba(255,250,241,0.88);
-  color: #5e3f32;
-
+  text-decoration: none;
+  color: #6c4632;
   font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
 
-  box-shadow: 0 12px 32px rgba(59,43,36,0.16);
-  backdrop-filter: blur(10px);
+  background: rgba(255,250,241,0.78);
+  border: 1px solid rgba(198,164,106,0.35);
+  padding: 10px 18px;
+  border-radius: 999px;
+  box-shadow: 0 12px 30px rgba(59,43,36,0.12);
+  backdrop-filter: blur(8px);
 
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition: opacity 0.5s ease;
 }
 
-.hero-section.visible .hero-scroll-btn {
+.hero-section.visible .hero-scroll-cue {
   opacity: 1;
   pointer-events: auto;
-  transform: translateX(-50%) translateY(0);
 }
 
-.hero-scroll-btn svg {
-  animation: heroScrollBounce 1.4s ease-in-out infinite;
+.scroll-arrow {
+  font-size: 22px;
+  line-height: 1;
+  animation: simpleArrowBounce 1.4s ease-in-out infinite;
 }
 
-@keyframes heroScrollBounce {
+@keyframes simpleArrowBounce {
   0%, 100% {
     transform: translateY(0);
   }
@@ -1300,13 +1301,6 @@ animation:fadeUp 1s 3.2s ease forwards;
   }
 }
 
-@media(max-width:480px) {
-  .hero-scroll-btn {
-    bottom: 18px;
-    padding: 10px 15px;
-    font-size: 11px;
-  }
-}
 /* =========================================
    RESPONSIVE
 ========================================= */
@@ -1912,6 +1906,15 @@ animation:fadeUp 1s 3.2s ease forwards;
   width: 25px;
   height: 25px;
 }
+.hero-scroll-cue {
+  bottom: 14px;
+  font-size: 10px;
+  padding: 8px 14px;
+}
+
+.scroll-arrow {
+  font-size: 20px;
+}
 }
 </style>
 </head>
@@ -1988,12 +1991,10 @@ we warmly invite you to celebrate our wedding.
 
     </div>
   </div>
-<button class="hero-scroll-btn" id="heroScrollBtn" type="button" aria-label="Scroll to family section">
-  <span>Scroll Down</span>
-  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <path d="m6 9 6 6 6-6"></path>
-  </svg>
-</button>
+  <a href="#familySection" class="hero-scroll-cue" aria-label="Scroll to next section">
+    <span>Scroll to explore</span>
+    <span class="scroll-arrow">⌄</span>
+  </a>
 </section>
 
 <!-- FAMILY SECTION -->
@@ -2253,7 +2254,6 @@ var eventsSection=document.getElementById("eventsSection");
 var gallerySection=document.getElementById("gallerySection");
 var locationSection=document.getElementById("locationSection");
 var footerSection=document.getElementById("footerSection");
-var heroScrollBtn=document.getElementById("heroScrollBtn");
 openBtn.onclick=function(){
 openingScreen.classList.add("hide-opening");
 setTimeout(function(){
@@ -2312,19 +2312,6 @@ secondsEl.innerHTML=pad(Math.floor((dist%(1000*60))/1000));
 }
 updateCountdown();
 setInterval(updateCountdown,1000);
-});
-updateCountdown();
-setInterval(updateCountdown,1000);
-
-/* Hero scroll button */
-if(heroScrollBtn){
-  heroScrollBtn.addEventListener("click",function(){
-    if(familySection){
-      familySection.scrollIntoView({behavior:"smooth"});
-    }
-  });
-}
-
 });
 </script>
 </body>
